@@ -33,7 +33,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
           >
             Try Before You{" "}
             <span className="gradient-text">Buy</span>
@@ -90,7 +90,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex gap-12 mt-16"
+            className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-12 md:mt-16"
           >
             {[
               { value: "50K+", label: "Try-Ons Daily" },
