@@ -91,8 +91,8 @@ const TryOnSection = ({ id }: TryOnSectionProps) => {
   const canGenerate = userPhoto && clothingPhoto && !isGenerating;
 
   return (
-    <section id={id} className="py-24 bg-background">
-      <div className="container mx-auto px-6">
+    <section id={id} className="py-12 sm:py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ const TryOnSection = ({ id }: TryOnSectionProps) => {
             <Wand2 className="w-4 h-4" />
             Virtual Try-On Studio
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             See It On <span className="gradient-text">You</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -149,7 +149,7 @@ const TryOnSection = ({ id }: TryOnSectionProps) => {
         </motion.div>
 
         {/* Upload Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {/* User Photo Upload */}
           <UploadZone
             type="photo"
@@ -306,7 +306,7 @@ const TryOnSection = ({ id }: TryOnSectionProps) => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-4">
               💡 Tips for Best Results
             </h4>
-            <ul className="grid md:grid-cols-2 gap-3 text-muted-foreground text-sm">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-muted-foreground text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary">•</span>
                 Use a front-facing photo with good lighting
