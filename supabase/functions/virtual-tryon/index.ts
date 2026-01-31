@@ -67,18 +67,23 @@ serve(async (req) => {
     const garmentType = categoryDescriptions[category] || categoryDescriptions.upper_body;
     const description = garmentDescription || "the clothing item";
 
-    const prompt = `You are a professional fashion AI. Create a realistic virtual try-on image.
+    const prompt = `VIRTUAL TRY-ON TASK - CRITICAL INSTRUCTIONS:
 
-Take the person from the first image and dress them in the ${garmentType} shown in the second image (${description}).
+IMAGE 1 (FIRST IMAGE) = TARGET PERSON - This is the customer who wants to try on clothes.
+IMAGE 2 (SECOND IMAGE) = SOURCE CLOTHING - This contains the ${garmentType} (${description}) to be transferred.
 
-Requirements:
-- Keep the person's face, body shape, pose, and background exactly the same
-- Replace only the ${garmentType} area with the clothing from the second image
-- Make the clothing fit naturally on the person's body
-- Maintain realistic lighting, shadows, and fabric draping
-- The result should look like a real photograph, not edited
+YOUR TASK: Take the CLOTHING from IMAGE 2 and put it onto the PERSON from IMAGE 1.
 
-Generate a single photorealistic image of the person wearing the new clothing.`;
+STRICT RULES:
+1. The OUTPUT must show the PERSON from IMAGE 1 (first image) - their face, hair, skin tone, body shape, pose, and background must remain EXACTLY the same.
+2. ONLY the clothing changes - extract the ${garmentType} from IMAGE 2 (second image) and dress the person from IMAGE 1 in it.
+3. The person's identity from IMAGE 2 is IRRELEVANT - we only want their CLOTHES, not their face or body.
+4. Any body type or photo size/resolution is acceptable - just focus on transferring the garment.
+5. Make the clothing fit naturally with realistic shadows, wrinkles, and lighting matching the first image.
+
+DO NOT: Show the person from IMAGE 2. We want IMAGE 1's person wearing IMAGE 2's clothes.
+
+Generate ONE photorealistic image of the person from the FIRST image wearing the clothing from the SECOND image.`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
