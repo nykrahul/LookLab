@@ -59,15 +59,29 @@ serve(async (req) => {
     console.log("Description:", garmentDescription || "clothing item");
 
     const categoryDescriptions: Record<string, string> = {
-      upper_body: "top, shirt, or upper body garment",
-      lower_body: "pants, skirt, or lower body garment",
-      dresses: "dress or full body outfit"
+      upper_body: "shirt/top",
+      lower_body: "pants/bottoms",
+      dresses: "dress/outfit"
     };
 
-    const garmentType = categoryDescriptions[category] || categoryDescriptions.upper_body;
-    const description = garmentDescription || "the clothing item";
+    const garmentType = categoryDescriptions[category] || "clothing";
 
-    const prompt = `Virtual clothing try-on: Take the ${garmentType} from the second image and put it on the person in the first image. Keep the person's face, body, pose, and background exactly the same. Only change their clothing to match what's shown in the second image. Generate a realistic photo.`;
+    const prompt = `TASK: Virtual clothing try-on.
+
+FIRST IMAGE = PERSON (keep this person exactly as they are)
+SECOND IMAGE = CLOTHING ONLY (extract only the garment, ignore any person wearing it)
+
+INSTRUCTIONS:
+1. Output must show the EXACT same person from FIRST IMAGE - same face, same hair, same skin, same body shape, same pose, same background, same lighting.
+2. Remove their current clothes and dress them in the ${garmentType} extracted from SECOND IMAGE.
+3. The clothing must fit naturally on this person's body - adjust size, wrinkles, shadows to match their pose and body.
+4. IGNORE any model/mannequin in the clothing image - only extract the garment itself.
+5. Photo quality, resolution, or body type does not matter - just transfer the clothes.
+
+WRONG: Showing the person from the clothing image.
+CORRECT: Showing the person from the first image wearing clothes from the second image.
+
+Generate a single photorealistic image.`;
 
     const makeRequest = async (attempt: number) => {
       console.log(`Attempt ${attempt}: Making AI request...`);
