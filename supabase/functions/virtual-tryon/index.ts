@@ -147,7 +147,7 @@ Generate a single photorealistic image.`;
       response = await makeRequest(attempt);
       if (response.ok) {
         data = await response.json();
-        generatedImage = data.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+        generatedImage = data.choices?.[0]?.message?.images?.[0]?.image_url?.url ||data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;;
       }
     }
     
