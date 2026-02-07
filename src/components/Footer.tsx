@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display text-xl font-bold">Look</span>
+              <span className="font-display text-xl font-bold">Look.ai</span>
             </a>
             <p className="text-white/60 max-w-sm leading-relaxed">
               AI-powered virtual try-on technology that lets you see how any outfit 
